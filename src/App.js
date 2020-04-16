@@ -2,17 +2,23 @@ import React, {useState} from 'react';
 import './App.css';
 import Navbar from './components/Navbar/Navbar';
 import Auth from './components/Auth/Auth';
+import Pies from './components/Pies/Pies';
+import 'bootstrap/dist/css/bootstrap.css';
 
 function App() {
   //      variable        function               initial value
-  const [sessionToken, setSessionToken] = useState('undefined');
+  const [sessionToken, setSessionToken] = useState('i have a token');
   //let sessionToken = undefined;
   //let setSessionToken = () => {};
+
+  const viewConductor = () => {
+    return sessionToken === undefined ? <Auth /> : <Pies />
+  }
 
   return (
     <div className="App">
       <Navbar />
-      <Auth />
+      {viewConductor()}
     </div>
   );
 }
